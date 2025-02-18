@@ -1,0 +1,212 @@
+{
+  "info": {
+    "name": "Review App API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"testuser\", \"password\": \"password123\"}"
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"testuser\", \"password\": \"password123\"}"
+        }
+      }
+    },
+    {
+      "name": "Get Logged-in User Info",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/auth/me"
+      }
+    },
+    {
+      "name": "Fetch All Items",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/items"
+      }
+    },
+    {
+      "name": "Fetch Single Item",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/items/{{itemId}}"
+      }
+    },
+    {
+      "name": "Fetch Reviews for Item",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/items/{{itemId}}/reviews"
+      }
+    },
+    {
+      "name": "Post Review (Logged-in)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/items/{{itemId}}/reviews",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"content\": \"This is a great item!\", \"rating\": 5}"
+        }
+      }
+    },
+    {
+      "name": "Fetch My Reviews",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/reviews/me"
+      }
+    },
+    {
+      "name": "Update Review",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/users/{{userId}}/reviews/{{reviewId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"content\": \"Updated review content\", \"rating\": 4}"
+        }
+      }
+    },
+    {
+      "name": "Delete Review",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/users/{{userId}}/reviews/{{reviewId}}"
+      }
+    },
+    {
+      "name": "Post Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/items/{{itemId}}/reviews/{{reviewId}}/comments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"content\": \"This is a great review!\"}"
+        }
+      }
+    },
+    {
+      "name": "Fetch My Comments",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/comments/me"
+      }
+    },
+    {
+      "name": "Update Comment",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/users/{{userId}}/comments/{{commentId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"content\": \"Updated comment content\"}"
+        }
+      }
+    },
+    {
+      "name": "Delete Comment",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/users/{{userId}}/comments/{{commentId}}"
+      }
+    }
+  ]
+}
